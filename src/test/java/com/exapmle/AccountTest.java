@@ -26,7 +26,8 @@ public class AccountTest {
                 {"Test testtesttestte", true},
                 {"Test  t", false},
                 {" test", false},
-                {"test ", false}
+                {"test ", false},
+                {null, false}
         };
     }
 
@@ -37,7 +38,7 @@ public class AccountTest {
     @Test
     public void accountParametersTest() {
         Account accountForTest = new Account(accountName);
-        Assert.assertEquals(accountForTest.checkNameToEmboss(), expectedResult);
+        Assert.assertEquals(expectedResult, accountForTest.checkNameToEmboss());
 
     }
 

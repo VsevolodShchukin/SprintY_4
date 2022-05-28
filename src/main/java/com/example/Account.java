@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.regex.Pattern;
+
 public class Account {
 
     private final String name;
@@ -9,12 +11,8 @@ public class Account {
     }
 
     public boolean checkNameToEmboss() {
-        int count = 0;
-        for (char element: name.toCharArray()){
-            if (element == ' ') count++;
-        }
 
-        return !(name.length() < 3 | name.length() > 19 | name.startsWith(" ") | name.endsWith(" ") | count != 1);
+        return name != null && !Pattern.compile("^ | $|  +?| .* +?|.{20,}").matcher(name).find() && Pattern.compile(".{3,}").matcher(name).find();
     }
 
 }
