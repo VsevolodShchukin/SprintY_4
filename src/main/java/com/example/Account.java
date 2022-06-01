@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Account {
@@ -11,8 +12,12 @@ public class Account {
     }
 
     public boolean checkNameToEmboss() {
-
-        return name != null && !Pattern.compile("^ | $|  +?| .* +?|.{20,}").matcher(name).find() && Pattern.compile(".{3,}").matcher(name).find();
+        if(name != null) {
+            Pattern pattern = Pattern.compile("^(?=.{3,19}$)[A-Za-zА-я]+\\s[A-Za-zА-я]+$");
+            Matcher matcher = pattern.matcher(name);
+            return matcher.matches();
+        }
+        return false;
     }
 
 }
